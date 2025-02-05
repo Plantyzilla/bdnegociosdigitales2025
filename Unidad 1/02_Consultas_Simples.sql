@@ -107,4 +107,35 @@ where date(BirthDate) between '1990' and '1995';
         #cualquiera de ellos en la posicion espesifica.
         #4) ^ (Potencia) -> Se utiliza para buscar caracteres que no estan dentro del
         #conjunto espesifico.
-        
+
+#Seleccionar los productos que comiensen con A o B
+select * from 
+products
+where ProductName like '[abc]%';
+
+#Seleccionar todos los productos que no comiencen
+#con A o B
+
+select * from 
+products
+where ProductName like 'a [^e]%';
+
+#Clausula order by
+
+select ProductID, ProductName
+from products
+order by ProductName desc;
+
+select ProductID, ProductName as 'Nombre'
+from products
+order by 'Nombre' desc;
+
+#Seleccionar los clientes ordenados por el país y dentro por
+#ciudad
+
+#select customerID, country, city
+#from customers
+#where (Country in 'Brazil' or country = 'Germany')
+#and region is not null
+#order by country, city desc;
+ 
