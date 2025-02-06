@@ -67,3 +67,47 @@ values (1, 'Miguelito','Dulce sano para la lombriz', 34.5,45,5);
 
         
 select * from categoria;
+
+create table cliente(
+clienteid int not null auto_increment,
+codigocliente varchar(15) not null,
+nombre varchar (30) not null,
+direccion varchar (100) not null,
+telefono varchar (19),
+constraint pk_cliente
+primary key (clienteid),
+constraint unico_codigocliente
+unique (codigocliente)
+);
+
+create table detalleorden(
+ordenfk int not null,
+productofk int not null,
+preciocompra decimal (10,2),
+cantidad int not null,
+constraint pk_detalleorden
+primary key (ordenfk, productofk),
+constraint chk_preciocompra
+check(preciocompra>0.0 and preciocompra<=20000),
+constraint chk_cantidad
+check (cantidad>0),
+constraint fk_detalleorden_producto
+foreign key (productofk)
+references productos1 (productoid)
+);
+
+create table ordencompra(
+ordenid int not null auto_increment,
+fechacompra date not null,
+cliente int not null,
+constraint pk_ordencompra
+primary key(ordenid),
+constraint fk_ordencompra_cliente
+foreign key (cliente)
+references cliente (clienteid)
+);
+
+alter table detalleorden
+add constraint fk_detalle_orden
+foreign key (ordenfk)
+references ordencompra (ordenid);
