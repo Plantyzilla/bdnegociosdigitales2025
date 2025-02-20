@@ -120,7 +120,7 @@ select * from
 products
 where ProductName like 'a [^e]%';
 
-#Clausula order by
+#Clausula order byplataforma
 
 select ProductID, ProductName
 from products
@@ -133,9 +133,9 @@ order by 'Nombre' desc;
 #Seleccionar los clientes ordenados por el país y dentro por
 #ciudad
 
-#select customerID, country, city
-#from customers
-#where (Country in 'Brazil' or country = 'Germany')
-#and region is not null
-#order by country, city desc;
+select customerID, country, city
+from customers
+where (Country in 'Brazil' or country = 'Germany')
+and region is not null
+order by country, city desc;
  
