@@ -1,5 +1,5 @@
 use BDEJEMPLO2;
---Examen
+--Examen parte #1
 --1.-
 select * from Clientes
 select * from Representantes

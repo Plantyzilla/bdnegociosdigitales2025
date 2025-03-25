@@ -1,71 +1,117 @@
-#Consulta de agregado
-#Solo devuelven un solo regristro
-#sum, avg, count, count(*), max y min
+-- Consultas de agregado 
+-- Nota: solo devuelven un solo registro
+-- sum, avg, count, count(*), max y min 
 
-#Cuantos clientes tengo
-select count(*) as 'Numero de clientes'
-from customers;
+-- cuantos clientes tengo
+select count(*) as 'Numero de clientes' 
+from Customers
 
-#Cuantas regiones hay
-select count(*)
-from customers
-where CustomerID is null;
+-- cuantas regiones hay
+select count(*) 
+from Customers
+where region is null
 
-#seleccionar el numero de productos por
-#categoria
-select CategoryID, count(*)
-from products
-group by CategoryID;
 
-select categories.categoryName,
-count(*) as 'Numero de Productos'
-from 
-categories
-inner join Products as p
-on categories.categoryID = p.CategoryID
-group by categories.categoryName;
+select count(distinct region)
+from Customers
+where region is not null
 
-select * from products;
-select categoryid, avg(Price) as 'Precio promedio'
+select * from Orders
+select count(*) from Orders
+select count(ShipRegion) from Orders
+
+select * from Products
+
+-- Selecciona el precio mas bajo de los
+-- productos
+select min(UnitPrice), max(UnitPrice),
+avg(UnitsInStock)
+from Products;
+
+-- Seleccionar cuantos pedidos existen 
+select count(*) as [Número de Pedidos] 
+from Orders
+
+-- Calcula el total de dinero vendido
+select sum(UnitPrice * Quantity ) 
+from [Order Details]
+
+select sum(UnitPrice * Quantity - 
+ (UnitPrice  * Quantity * Discount) ) as Total
+from [Order Details]
+-- calcula el total de unidades en stock de 
+-- todos los productos
+
+select sum(UnitsInStock) as 'Total Stock' 
 from Products
-group by CategoryID;
 
-#seleccionar el numero de pedidos realizados por cada empleado por el
-#ultimo trmestre de 1996
+-- Seleccionar el numero de productos por
+-- categoria
+select CategoryID, count(*) as 'Numero de productos' 
+from Products
+group by CategoryID
 
-select employeeID, count(*) as 'Numero de pedidos'
-from orders
-group by EmployeeID;
+select Categories.CategoryName, 
+count(*) as [Numero de Productos] 
+from 
+Categories
+inner join Products as p
+on Categories.CategoryID = p.CategoryID
+group by Categories.CategoryName
 
-select employeeID ,count(*) from orders
+-- Calcular el precio promedio de los productos por cada categoria
+select categoryid, avg(UnitPrice) as 'Precio Promedio'
+from Products
+group by CategoryID
+
+-- seleccionar el numero de pedidos realizados por cada empleado por el
+-- ultimo trimestre de 1996
+select EmployeeID,count(*) as 'Numero de Pedidos'
+from Orders
+group by EmployeeID
+
+select EmployeeID ,count(*) from Orders
 where OrderDate between '1996-10-01' and '1996-12-31'
-group by employeeID;
+group by EmployeeID
 
-#seleccionar la suma total de unidades vendidas por cada producto
-#Nota: Los corchetes no existen en MySQL
+-- Seleccionar la suma total de unidades vendidas por cada producto
+select ProductID,sum(Quantity) as 'Numero de Productos vendidos' 
+from [Order Details]
+group by ProductID
+order by 1 desc
 
-select ProductID, sum(Quantity) as 'Unidades vendidas'
-from OrderDetails
-group by OrderID, ProductID
-Order by 1 asc;
+select orderid, ProductID,sum(Quantity) as 'Numero de Productos vendidos'
+from [Order Details]
+group by orderid, ProductID
+order by 2 desc
 
-select ProductID, sum(Quantity) as 'Unidades vendidas'
-from OrderDetails
-group by OrderID, ProductID
-Order by 2 asc;
+-- Seleccionar el numero de productos por categoria 
+-- pero solo aquellos quie tengan mas de 10 productos
 
-#Seleccionar el numero de productos
-#por categoria, pero solo aquellos que
-#tengan mas de 10 productos
+-- paso 1 
+select * from Products
+-- select distinct CategoryID from Products
 
-select dis CategoryID ,count(price) as 'total products'
-from products
-where categoryID in (1,3,4)
-group by categoryID
-having count(*) > 10;
+-- paso 2
+select CategoryID, UnitsInStock from Products
+where CategoryID in (2,4,8)
+order by CategoryID
 
-#Listar las ordenes agrupadas por empleado, pero solo muestre aquellos
-#que hayan gestion mas de 10 pedidos
+-- paso 3
 
-select * from orders;
+select CategoryID, sum(UnitsInStock) 
+from Products
+where CategoryID in (2,4,8)
+group by CategoryID
+order by CategoryID
 
+-- paso 4
+select CategoryID, sum(UnitsInStock) 
+from Products
+where CategoryID in (2,4,8)
+group by CategoryID
+having count(*)>10
+order by CategoryID
+
+-- Listar las ordenes agrupadas por empleado, pero que solo muestre aquellos
+-- que hayan gestionado mas de 10 pedidos.
