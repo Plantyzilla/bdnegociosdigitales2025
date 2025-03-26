@@ -1,3 +1,8 @@
+# Consultas simples
+## Por Yael
+
+## Ejercicio
+```sql
 -- Lenguaje SQL-LMD (insert, update, delete, select - CRUD)
 -- Consultas Simples
 
@@ -13,7 +18,7 @@ select * from Employees;
 select * from Orders;
 select * from Suppliers;
 select * from Products;
-select * from Shippers;
+select *from Shippers;
 select * from categories;
 select * from [Order Details]
 
@@ -171,3 +176,4 @@ where ReportsTo != 2
 -- Seleccionar los empleados que no tengan jefe
 select * from Employees
 where ReportsTo is null
+```
