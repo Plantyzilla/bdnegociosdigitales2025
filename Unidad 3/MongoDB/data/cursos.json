@@ -1,0 +1,22 @@
+db.cursos.insertMany([
+{
+  _id: 1,
+  nombre: "Curso1",
+  aula: "aula1",
+  profesores: [101,102]
+ }
+ ,
+ {
+  _id: 2,
+  nombre: "Curso2",
+  aula: "aula2",
+  profesores: [101,103]
+ }
+ ,
+ {
+  _id: 3,
+  nombre: "Curso3",
+  aula: "aula3",
+  profesores: [102,101,101]
+ }
+ ])

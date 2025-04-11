@@ -1,15 +1,17 @@
-# 09 Ejercicio de storeprocedure
-## Por yael
-- Realizar un pedido
-- Validar que el pedido no exista
-- Validar que el cliente, el empleado y producto exista
-- Validar que la cantidad a vender tenga suficiente stock
-- Insertar el pedido y calcular el importe (multiplicando el precio del
- del producto por cantidad vendida)
-- Actualizar el stock del producto(restando el stock menos la cantidad 
- vendida)
-
+# Ejercicio de Store procedure
+## Por: Yael Tolentino Osornio
+## Ejercicio(s):
 ```sql
+-- Realizar un pedido
+-- Validar que el pedido no exista
+-- Validar que el cliente, el empleado y producto exista
+-- Validar que la cantidad a vender tenga suficiente stock
+-- Insertar el pedido y calcular el importe (multiplicando el precio del
+ --del producto por cantidad vendida)
+-- Actualizar el stock del producto(restando el stock menos la cantidad 
+ --vendida)
+
+
 create or alter procedure spu_realizar_pedido
 @numPedido int, @cliente int, 
 @repre int, @fab char(3),

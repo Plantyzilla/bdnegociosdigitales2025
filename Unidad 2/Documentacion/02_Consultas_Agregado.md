@@ -1,11 +1,11 @@
-# Practicas de las consultas
-## Por Yael
+# Practicas de las consultas agregado
+## Por: Yael Tolentino Osornio
 
+
+## Consultas de agregado Nota: solo devuelven un solo registro sum, avg, count, count(*), max y min 
+
+# Ejercicios
 ```sql
--- Consultas de agregado 
--- Nota: solo devuelven un solo registro
--- sum, avg, count, count(*), max y min 
-
 -- cuantos clientes tengo
 select count(*) as 'Numero de clientes' 
 from Customers

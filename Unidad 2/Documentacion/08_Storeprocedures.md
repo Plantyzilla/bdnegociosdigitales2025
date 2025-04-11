@@ -1,5 +1,6 @@
-# Ejercicios
-## Por Yael
+# Practica de Store procedures
+## Por: Yael Tolentino Osornio
+## Ejercicio(s):
 
 ```sql
 -- Store Procedure

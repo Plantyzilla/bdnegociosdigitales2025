@@ -1,6 +1,8 @@
 -- Store Procedure
 
 -- Crear un store procedure para seleccionar todos los clientes
+use Northwind;
+go
 
 create or alter procedure spu_mostrar_clientes
 AS
@@ -12,7 +14,7 @@ GO
 -- Ejecutar un store en transact
 
 exec spu_mostrar_clientes
-
+go
 
 -- Crear un sp que muestre los clientes por pais
 -- Parametros de entrada
@@ -132,7 +134,7 @@ end;
 go
 
 exec spu_obtener_cliente_siexiste @numeroCliente = 'Arout'
-
+go
 -- Crear un store procedure que permita insertar un cliente, 
 -- pero se debe verificar primero que no exista
 
@@ -181,7 +183,7 @@ create or alter procedure spu_agregar_cliente_try_catch
  end;
  Go
  exec spu_agregar_cliente 'AlFKD', 'Muñeca Vieja'
-
+ go
  -- Manejo de ciclos en store procedures
 
  -- Imprimir el numero de veces que indique el usuario

@@ -1,11 +1,8 @@
-# Consultas simples
-## Por Yael
-
-## Ejercicio
+# Practica de Consultas simples
+## Por: Yael Tolentino Osornio 
+# Lenguaje SQL-LMD (insert, update, delete, select - CRUD) Consultas Simples
+## Ejercicios:
 ```sql
--- Lenguaje SQL-LMD (insert, update, delete, select - CRUD)
--- Consultas Simples
-
 use Northwind;
 
 -- Mostrar todos los clientes, proveedores, categorias, productos, 
@@ -30,13 +27,13 @@ from products;
 -- selecionar el numero de empleado, su primer nombre, 
 -- su cargo, ciudad y pais.
 select EmployeeID, FirstName, Title, city, country 
-from Employees; 
+from Employees;
+``` 
+# Alias de columna
 
--- Alias de columna
-
--- En base a la consulta anterior, visualizar es employeeid
--- como numero empleado, firstname como primerNombre,
--- Title como cargo, city como ciudad, country con país.
+## En base a la consulta anterior, visualizar es employeeid como numero empleado, firstname como primerNombre, Title como cargo, city como ciudad, country con país.
+## Ejercicios
+```sql
 
 select EmployeeID as 'Numero Empleado', 
 FirstName as primernombre, Title 'cargo', City as ciudad, 
@@ -64,17 +61,18 @@ month(OrderDate) as 'Mes de la Orden',
 day(OrderDate) as 'Día de la orden',
 CustomerID, EmployeeID 
 from Orders;
+```
 
--- Filas Duplicadas (Distinct)
-
+## Filas Duplicadas (Distinct)
+```sql
 -- Mostrar los paises en donde se tienen clientes, 
 -- mostrando pais solamente
 select distinct Country From Customers
 order by country 
-
--- Clausula where 
--- Operadores relacionales o test de comparación (<,>,=,<=,>=, != o <>)
-
+```
+## Clausula where  Operadores relacionales o test de comparación (<,>,=,<=,>=, != o <>)
+## Ejercicios
+```sql
 
 -- Seleccionar el cliente BOLID
 

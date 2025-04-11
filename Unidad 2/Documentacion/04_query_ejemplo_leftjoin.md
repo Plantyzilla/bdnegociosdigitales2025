@@ -1,16 +1,15 @@
-# Ejercicios
-## Por Yael
-
+# Practica de Query con ejemplo de left join
+## Por: Yael Tolentino Osornio
+## Ejemplo de left join aplicado:
 ```sql
--- Ejemplo de left join aplicado
-
 use northwind
 
 select * from products_new
 
 drop table products_new
-
--- Crear un tabla a partir de una consulta 
+```
+## Crear un tablas:
+```sql 
 select p.ProductID, p.ProductName
 ,[cu].CompanyName, 
 c.CategoryName, od.UnitPrice, 
@@ -27,7 +26,8 @@ on o.OrderID = od.OrderID
 inner join Customers as [cu]
 on [cu].CustomerID = o.CustomerID
 
--- crea la tabla con solo la estructura
+-- Crea la tabla con solo la estructura
+
 select top 0 p.ProductID, p.ProductName
 ,[cu].CompanyName, 
 c.CategoryName, od.UnitPrice, 
